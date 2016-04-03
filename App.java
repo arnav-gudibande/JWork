@@ -32,6 +32,7 @@ public class App
         buttons1.add(new JButton("u"));
         buttons1.add(new JButton("Aa"));
         buttons1.add(new JButton("Colors"));
+        //
         
         op1.add(buttons1, BorderLayout.NORTH);
         
@@ -51,9 +52,6 @@ public class App
         op2.add(new JButton("Orange"), BorderLayout.CENTER);
         op2.add(new JButton("Green"), BorderLayout.SOUTH);
         ////
-        
-        JPanel Tt = new JPanel();
-        Tt.add(title, BorderLayout.CENTER);
 
         captions.add(op1, BorderLayout.NORTH);
         captions.add(title, BorderLayout.CENTER);
