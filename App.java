@@ -75,6 +75,7 @@ public class App
         frame.add(icons, BorderLayout.CENTER);
         frame.setSize(1200,700);
         frame.setVisible(true);
+        frame.setResizable(false);
     }
 
     static class RadIcons extends JPanel implements ActionListener {
