@@ -7,6 +7,8 @@ public class App
     JPanel captions;
     JPanel icon;
     JFrame frame;
+    static JLabel Caption1 = new JLabel("Caption 1", JLabel.CENTER);
+    static String stringcaption1;
 
     public App()
     {}
@@ -14,6 +16,9 @@ public class App
     public void createLayout()
     {
         frame = new JFrame("Logo Creator");
+        GraphicsEnvironment x = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        String[] fonts = x.getAvailableFontFamilyNames();
+        JComboBox Ft = new JComboBox(fonts);
 
         //
         captions = new JPanel();
@@ -29,26 +34,32 @@ public class App
         JPanel buttons1 = new JPanel(new FlowLayout());
         buttons1.add(new JButton("B"));
         buttons1.add(new JButton("i"));
-        buttons1.add(new JButton("u"));
-        buttons1.add(new JButton("Aa"));
+        buttons1.add(Ft);
         String[] COLORS = { "Red", "Blue", "Orange", "Black", "Green" };
         buttons1.add(new JComboBox(COLORS));
 
         op1.add(buttons1, BorderLayout.NORTH);
 
-        String[] placement = {"Top", "Bottom", "Left", "Right"};
-        
+        String[] placement = {"Top", "Bottom"};
+
         JPanel text1 = new JPanel(new FlowLayout());
         JButton enter1 = new JButton("Enter");
         JTextField cap1 = new JTextField("Caption 1 goes here");
         JComboBox place1 = new JComboBox(placement);
-        
+        enter1.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e){
+                    String value = cap1.getText();
+                    stringcaption1 = value;
+                    Caption1.setText(value);
+                }
+            });
+
         text1.add(cap1);
         text1.add(place1);
         text1.add(enter1);
         text1.setBorder(BorderFactory.createEmptyBorder(70,70,70,70));
         op1.add(text1, BorderLayout.CENTER);
-        
+
         JPanel text2 = new JPanel(new FlowLayout());
         JButton enter2 = new JButton("Enter");
         JTextField cap2 = new JTextField("Caption 2 goes here");
@@ -66,14 +77,14 @@ public class App
 
         Component newContentPane = new RadIcons();
         icons.add(newContentPane);
-        
+
         JLabel mainT = new JLabel("Logo Creator", JLabel.CENTER);
         mainT.setFont(new Font("Zapfino", Font.BOLD, 40));
-        
+
         frame.add(mainT, BorderLayout.NORTH);
         frame.add(captions, BorderLayout.WEST);
         frame.add(icons, BorderLayout.CENTER);
-        frame.setSize(1200,700);
+        frame.setSize(1300,700);
         frame.setVisible(true);
         frame.setResizable(false);
     }
@@ -111,7 +122,6 @@ public class App
             group.add(dogButton);
             group.add(rabbitButton);
             group.add(pigButton);
-            
 
             birdButton.addActionListener(this);
             catButton.addActionListener(this);
@@ -131,14 +141,21 @@ public class App
             radioPanel.add(rabbitButton);
             radioPanel.add(pigButton);
             radioPanel.setBorder(BorderFactory.createEmptyBorder(75,75,75,75));
+            
             JLabel iconT = new JLabel("Icons", JLabel.CENTER);
             iconT.setFont(new Font("Optima", Font.BOLD, 22));
+            
             JPanel actual = new JPanel();
             actual.add(radioPanel, BorderLayout.CENTER);
-            actual.add(iconT, BorderLayout.EAST);
+            //actual.add(iconT, BorderLayout.NORTH);
             
+            JPanel pics = new JPanel();
+            pics.add(picture, BorderLayout.CENTER);
+            pics.add(Caption1, BorderLayout.NORTH);
+
             add(actual, BorderLayout.EAST);
-            add(picture, BorderLayout.CENTER);
+            add(pics, BorderLayout.WEST);
+            //add(picture, BorderLayout.CENTER);
             setBorder(BorderFactory.createEmptyBorder(70,70,70,70));
         }
 
