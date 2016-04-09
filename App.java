@@ -20,6 +20,7 @@ public class App
         GraphicsEnvironment x = GraphicsEnvironment.getLocalGraphicsEnvironment();
         String[] fonts = x.getAvailableFontFamilyNames();
         JComboBox Ft = new JComboBox(fonts);
+        JComboBox Ft2 = new JComboBox(fonts);
 
         captions = new JPanel();
         captions.setLayout(new BorderLayout());
@@ -35,14 +36,15 @@ public class App
         buttons1.add(new JButton("i"));
         buttons1.add(Ft);
         String[] COLORS = { "Red", "Blue", "Orange", "Black", "Green" };
-        buttons1.add(new JComboBox(COLORS));
+        JComboBox colors1 = new JComboBox(COLORS);
+        buttons1.add(colors1);
         
         JPanel buttons2 = new JPanel(new FlowLayout());
         buttons2.add(new JButton("B"));
         buttons2.add(new JButton("i"));
-        buttons2.add(Ft);
-        //String[] COLORS = { "Red", "Blue", "Orange", "Black", "Green" };
-        buttons2.add(new JComboBox(COLORS));
+        buttons2.add(Ft2);
+        JComboBox colors2 = new JComboBox(COLORS);
+        buttons2.add(colors2);
 
         op1.add(buttons1, BorderLayout.NORTH);
 
@@ -89,12 +91,18 @@ public class App
                     Caption2.setText(value);
                 }
             });
-            
+        
+        
+        //op1.add(buttons2, BorderLayout.SOUTH);
+        JPanel temp = new JPanel();
+        
         text2.add(cap2);
         text2.add(place2);
         text2.add(enter2);
         text2.setBorder(BorderFactory.createEmptyBorder(75,75,75,75));
-        op1.add(text2, BorderLayout.SOUTH);
+        temp.add(text2,BorderLayout.SOUTH);
+        //temp.add(buttons1, BorderLayout.NORTH);
+        op1.add(temp, BorderLayout.SOUTH);
 
         captions.add(op1, BorderLayout.CENTER);
         captions.add(captT, BorderLayout.NORTH);
@@ -113,7 +121,7 @@ public class App
         frame.add(dembuttons, BorderLayout.EAST);
         frame.setSize(1300,700);
         frame.setVisible(true);
-        frame.setResizable(false);
+        frame.setResizable(true);
     }
 
     static class RadIcons extends JPanel implements ActionListener {
