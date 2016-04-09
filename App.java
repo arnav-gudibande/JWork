@@ -8,8 +8,9 @@ public class App
     JPanel icon;
     JFrame frame;
     static JLabel Caption1 = new JLabel("Caption 1", JLabel.CENTER);
+    static JLabel Caption2 = new JLabel("Caption 2", JLabel.CENTER);
     static String stringcaption1;
-
+    static JPanel dembuttons = new JPanel();
     public App()
     {}
 
@@ -20,14 +21,12 @@ public class App
         String[] fonts = x.getAvailableFontFamilyNames();
         JComboBox Ft = new JComboBox(fonts);
 
-        //
         captions = new JPanel();
         captions.setLayout(new BorderLayout());
 
         JLabel captT = new JLabel("Captions", JLabel.CENTER);
         captT.setFont(new Font("Optima", Font.BOLD, 28));
 
-        ////
         JPanel op1 = new JPanel();
         op1.setLayout(new BorderLayout());
 
@@ -37,23 +36,40 @@ public class App
         buttons1.add(Ft);
         String[] COLORS = { "Red", "Blue", "Orange", "Black", "Green" };
         buttons1.add(new JComboBox(COLORS));
+        
+        JPanel buttons2 = new JPanel(new FlowLayout());
+        buttons2.add(new JButton("B"));
+        buttons2.add(new JButton("i"));
+        buttons2.add(Ft);
+        //String[] COLORS = { "Red", "Blue", "Orange", "Black", "Green" };
+        buttons2.add(new JComboBox(COLORS));
 
         op1.add(buttons1, BorderLayout.NORTH);
 
-        String[] placement = {"Top", "Bottom"};
+        String[] placement = new String[24];
+        int[] fontsizes = {};
+        int num;
+        
+        for(int i=0; i<24; i++){
+            num = i+20;
+            placement[i] = Integer.toString(num) + " pt";
+        }
+        
 
         JPanel text1 = new JPanel(new FlowLayout());
         JButton enter1 = new JButton("Enter");
         JTextField cap1 = new JTextField("Caption 1 goes here");
         JComboBox place1 = new JComboBox(placement);
-        enter1.addActionListener(new ActionListener() {
+        
+        enter1.addActionListener(new ActionListener() 
+            {
                 public void actionPerformed(ActionEvent e){
                     String value = cap1.getText();
                     stringcaption1 = value;
                     Caption1.setText(value);
                 }
             });
-
+            
         text1.add(cap1);
         text1.add(place1);
         text1.add(enter1);
@@ -64,6 +80,16 @@ public class App
         JButton enter2 = new JButton("Enter");
         JTextField cap2 = new JTextField("Caption 2 goes here");
         JComboBox place2 = new JComboBox(placement);
+        
+        enter2.addActionListener(new ActionListener() 
+            {
+                public void actionPerformed(ActionEvent e){
+                    String value = cap2.getText();
+                    stringcaption1 = value;
+                    Caption2.setText(value);
+                }
+            });
+            
         text2.add(cap2);
         text2.add(place2);
         text2.add(enter2);
@@ -84,6 +110,7 @@ public class App
         frame.add(mainT, BorderLayout.NORTH);
         frame.add(captions, BorderLayout.WEST);
         frame.add(icons, BorderLayout.CENTER);
+        frame.add(dembuttons, BorderLayout.EAST);
         frame.setSize(1300,700);
         frame.setVisible(true);
         frame.setResizable(false);
@@ -141,21 +168,23 @@ public class App
             radioPanel.add(rabbitButton);
             radioPanel.add(pigButton);
             radioPanel.setBorder(BorderFactory.createEmptyBorder(75,75,75,75));
-            
+
             JLabel iconT = new JLabel("Icons", JLabel.CENTER);
             iconT.setFont(new Font("Optima", Font.BOLD, 22));
-            
+
             JPanel actual = new JPanel();
             actual.add(radioPanel, BorderLayout.CENTER);
-            //actual.add(iconT, BorderLayout.NORTH);
+            JPanel YO = new JPanel();
+            YO.add(Caption1, BorderLayout.WEST);
+            YO.setBorder(BorderFactory.createEmptyBorder(0,0,10,10));
+            JPanel picap = new JPanel(new BorderLayout());
+            picap.add(picture, BorderLayout.CENTER);
+            picap.add(YO, BorderLayout.NORTH);
             
-            JPanel pics = new JPanel();
-            pics.add(picture, BorderLayout.CENTER);
-            pics.add(Caption1, BorderLayout.NORTH);
-
-            add(actual, BorderLayout.EAST);
-            add(pics, BorderLayout.WEST);
-            //add(picture, BorderLayout.CENTER);
+            dembuttons.add(radioPanel, BorderLayout.SOUTH);
+            add(picap, BorderLayout.WEST);
+            add(Caption1, BorderLayout.NORTH);
+            add(Caption2, BorderLayout.SOUTH);
             setBorder(BorderFactory.createEmptyBorder(70,70,70,70));
         }
 
