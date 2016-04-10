@@ -19,6 +19,7 @@ public class App
         frame = new JFrame("Logo Creator");
         GraphicsEnvironment x = GraphicsEnvironment.getLocalGraphicsEnvironment();
         String[] fonts = x.getAvailableFontFamilyNames();
+     
         JComboBox Ft = new JComboBox(fonts);
         JComboBox Ft2 = new JComboBox(fonts);
 
@@ -32,19 +33,21 @@ public class App
         op1.setLayout(new BorderLayout());
 
         JPanel buttons1 = new JPanel(new FlowLayout());
-        buttons1.add(new JButton("B"));
-        buttons1.add(new JButton("i"));
+        JCheckBox Bold = new JCheckBox("Bold");
+        buttons1.add(Bold);
+        JCheckBox Italics = new JCheckBox("Italicize");
+        buttons1.add(Italics);
         buttons1.add(Ft);
-        String[] COLORS = { "Red", "Blue", "Orange", "Black", "Green" };
-        JComboBox colors1 = new JComboBox(COLORS);
-        buttons1.add(colors1);
+        JPanel Colors = new JPanel();
+        //Colors.setResizable(false);
+        JColorChooser ColorCap = new JColorChooser();
+        ColorCap.removeChooserPanel(Swatches);
+        Colors.add(ColorCap);
+        //String[] COLORS = { "Red", "Blue", "Orange", "Black", "Green" };
+        //JComboBox colors1 = new JComboBox(COLORS);
         
-        JPanel buttons2 = new JPanel(new FlowLayout());
-        buttons2.add(new JButton("B"));
-        buttons2.add(new JButton("i"));
-        buttons2.add(Ft2);
-        JComboBox colors2 = new JComboBox(COLORS);
-        buttons2.add(colors2);
+        buttons1.add(Colors);
+       
 
         op1.add(buttons1, BorderLayout.NORTH);
 
