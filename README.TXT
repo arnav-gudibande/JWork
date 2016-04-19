@@ -1,2 +1,2 @@
-JWork
+LogoCreator
 
